@@ -4,12 +4,17 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Users/parksh/AndroidStudioProjects/NewsApp/app/src/main/res/drawable/ic_categories.xml" value="0.1" />
+        <entry key="..\:/Users/parksh/AndroidStudioProjects/NewsApp/app/src/main/res/drawable/ic_error.xml" value="0.1775" />
         <entry key="..\:/Users/parksh/AndroidStudioProjects/NewsApp/app/src/main/res/drawable/ic_launcher_background.xml" value="0.1" />
         <entry key="..\:/Users/parksh/AndroidStudioProjects/NewsApp/app/src/main/res/drawable/ic_saved.xml" value="0.1" />
         <entry key="..\:/Users/parksh/AndroidStudioProjects/NewsApp/app/src/main/res/drawable/ic_topnews.xml" value="0.1" />
         <entry key="..\:/Users/parksh/AndroidStudioProjects/NewsApp/app/src/main/res/drawable/menu_selector_color.xml" value="0.1" />
+        <entry key="..\:/Users/parksh/AndroidStudioProjects/NewsApp/app/src/main/res/font/inter_bold.xml" value="0.4166666666666667" />
         <entry key="..\:/Users/parksh/AndroidStudioProjects/NewsApp/app/src/main/res/layout/activity_main.xml" value="0.2" />
+        <entry key="..\:/Users/parksh/AndroidStudioProjects/NewsApp/app/src/main/res/layout/fragment_categories.xml" value="0.196048632218845" />
         <entry key="..\:/Users/parksh/AndroidStudioProjects/NewsApp/app/src/main/res/layout/fragment_top_news.xml" value="0.2164855072463768" />
+        <entry key="..\:/Users/parksh/AndroidStudioProjects/NewsApp/app/src/main/res/layout/top_news_low_layout.xml" value="0.264" />
+        <entry key="..\:/Users/parksh/AndroidStudioProjects/NewsApp/app/src/main/res/layout/top_news_row_layout.xml" value="0.20878623188405798" />
         <entry key="..\:/Users/parksh/AndroidStudioProjects/NewsApp/app/src/main/res/menu/new_menu.xml" value="0.21041666666666667" />
         <entry key="..\:/Users/parksh/AndroidStudioProjects/NewsApp/app/src/main/res/menu/news_menu.xml" value="0.36770833333333336" />
       </map>
