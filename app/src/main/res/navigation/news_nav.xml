@@ -17,7 +17,11 @@
         android:id="@+id/categoriesFragment"
         android:name="com.example.newsapp.ui.categories.CategoriesFragment"
         android:label="fragment_categories"
-        tools:layout="@layout/fragment_categories" />
+        tools:layout="@layout/fragment_categories" >
+        <action
+            android:id="@+id/action_categoriesFragment_to_categoriesListFragment"
+            app:destination="@id/categoriesListFragment" />
+    </fragment>
     <fragment
         android:id="@+id/savedFragment"
         android:name="com.example.newsapp.ui.saved.SavedFragment"
@@ -32,5 +36,18 @@
             android:name="article"
             app:argType="com.example.newsapp.model.Article" />
     </fragment>
+    <fragment
+        android:id="@+id/categoriesListFragment"
+        android:name="com.example.newsapp.ui.categories.CategoriesListFragment"
+        android:label="fragment_category_list"
+        tools:layout="@layout/fragment_categories_list" >
+        <argument
+            android:name="category"
+            app:argType="string" />
+        <action
+            android:id="@+id/action_categoriesListFragment_to_newsDetailFragment"
+            app:destination="@id/newsDetailFragment" />
+    </fragment>
+
 
 </navigation>
