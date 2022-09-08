@@ -4,16 +4,36 @@ import android.annotation.SuppressLint
 import android.util.Log
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.databinding.BindingAdapter
+import androidx.navigation.findNavController
 import coil.load
 import com.example.newsapp.R
+import com.example.newsapp.model.Article
+import com.example.newsapp.ui.topnews.TopNewsFragmentDirections
 import java.text.SimpleDateFormat
 
 class NewsRowBinding {
     companion object {
+
+        @BindingAdapter("onNewsClickListener")
+        @JvmStatic
+        fun onNewsClickListener(newsRowLayout: ConstraintLayout, article: Article) {
+            newsRowLayout.setOnClickListener {
+                try {
+                    val action = TopNewsFragmentDirections.actionTopNewsFragmentToNewsDetailFragment(article)
+                    newsRowLayout.findNavController().navigate(action)
+
+                    Log.d("NewsRowBinding", article.urlToImage!!)
+                } catch (e: Exception) {
+                    Log.d("onNewsClickListner", e.toString())
+                }
+            }
+        }
+
         @BindingAdapter("loadImageFromUrl")
         @JvmStatic
-        fun loadImageFromUrl(imageView: ImageView, imageUrl: String) {
+        fun loadImageFromUrl(imageView: ImageView, imageUrl: String?) {
             imageView.load(imageUrl) {
                 crossfade(600)
                 error(R.drawable.ic_error)
@@ -43,7 +63,6 @@ class NewsRowBinding {
 
             val writeTime = format.parse(splitTimes).time
             var diff: Long = (nowTime - writeTime) / 1000
-            Log.d("NewsRowBinding", splitTimes + " " + nowTime + " " + writeTime + " " + diff)
 
             if (diff < TimeValue.SEC.value)
                 textView.text = "Just Now"
