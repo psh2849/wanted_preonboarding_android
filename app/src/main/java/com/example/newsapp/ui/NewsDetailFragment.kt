@@ -1,31 +1,52 @@
 package com.example.newsapp.ui
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.navigation.navArgs
+import androidx.navigation.fragment.navArgs
+import coil.load
 import com.example.newsapp.R
-import com.example.newsapp.model.Article
-import kotlinx.android.synthetic.main.activity_news_detail.*
+import com.example.newsapp.bindingadapter.NewsRowBinding
+import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.android.synthetic.main.fragment_news_detail.view.*
 
-class NewsDetailFragment: Fragment() {
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_news_detail)
-        // setToolbar()
+@AndroidEntryPoint
+class NewsDetailFragment : Fragment() {
+    private val args by navArgs<NewsDetailFragmentArgs>()
 
-        getBundleFromTopNewsFragment()
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        val view = inflater.inflate(R.layout.fragment_news_detail, container, false)
 
+        getBundleFromTopNewsFragment(view)
+        return view
     }
 
-    private fun getBundleFromTopNewsFragment() {
-        val args = arguments
-        val myBundle: Article? = args?.getP
+    private fun getBundleFromTopNewsFragment(view: View) {
+        val result = args.article
 
-    }
+        view.tv_detail_title.text = result.title
+        NewsRowBinding.setTextOfTime(view.tv_detail_time, result.publishedAt)
 
-    private fun setToolbar() {
-        setToolbar()
-        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        result.author?.let { author ->
+            view.tv_detail_author.text = author
+        }
+
+        result.urlToImage?.let { image ->
+            view.iv_detail_image.load(image) {
+                crossfade(600)
+                error(R.drawable.ic_error)
+            }
+        }
+
+        result.content?.let { content ->
+            view.tv_detail_content.text = content
+        }
+
     }
 }
