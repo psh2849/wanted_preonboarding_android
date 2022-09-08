@@ -1,18 +1,21 @@
 package com.example.newsapp.viewmodel
 
 import android.app.Application
-import android.util.Log
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.example.newsapp.data.Repository
 import com.example.newsapp.model.NewsResult
-import com.example.newsapp.util.Constants
-import com.example.newsapp.util.Constants.Companion.API_KEY
+import com.example.newsapp.util.Constants.Companion.INPUT_NEWS_API_KEY
+import com.example.newsapp.util.Constants.Companion.INPUT_NEWS_COUNTRY
+import com.example.newsapp.util.Constants.Companion.INPUT_NEWS_PAGE_SIZE
+import com.example.newsapp.util.Constants.Companion.NEWS_APIKEY
+import com.example.newsapp.util.Constants.Companion.NEWS_CATEGORY
+import com.example.newsapp.util.Constants.Companion.NEWS_COUNTRY
+import com.example.newsapp.util.Constants.Companion.NEWS_PAGE_SIZE
 import com.example.newsapp.util.NetworkResult
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
-import retrofit2.Response
 import javax.inject.Inject
 
 @HiltViewModel
@@ -26,9 +29,21 @@ class NewsViewModel @Inject constructor(
     fun getQueries(): HashMap<String, String> {
         val queries: HashMap<String, String> = HashMap()
 
-        queries["country"] = "us"
-        queries["apiKey"] = API_KEY
-        queries["pageSize"] = "100"
+        queries[NEWS_COUNTRY] = INPUT_NEWS_COUNTRY
+        queries[NEWS_APIKEY] = INPUT_NEWS_API_KEY
+        queries[NEWS_PAGE_SIZE] = INPUT_NEWS_PAGE_SIZE
+
+        return queries
+    }
+
+    fun getCategoryQueries(category: String): HashMap<String, String> {
+        val queries: HashMap<String, String> = HashMap()
+
+        queries[NEWS_COUNTRY] = INPUT_NEWS_COUNTRY
+        queries[NEWS_CATEGORY] = category
+        queries[NEWS_APIKEY] = INPUT_NEWS_API_KEY
+        queries[NEWS_PAGE_SIZE] = INPUT_NEWS_PAGE_SIZE
+
         return queries
     }
 
