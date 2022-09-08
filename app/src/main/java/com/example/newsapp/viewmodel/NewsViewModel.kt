@@ -28,7 +28,7 @@ class NewsViewModel @Inject constructor(
 
         queries["country"] = "us"
         queries["apiKey"] = API_KEY
-
+        queries["pageSize"] = "100"
         return queries
     }
 
