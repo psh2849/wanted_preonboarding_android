@@ -26,7 +26,7 @@ class NewsRowBinding {
 
                     Log.d("NewsRowBinding", article.urlToImage!!)
                 } catch (e: Exception) {
-                    Log.d("onNewsClickListner", e.toString())
+                    Log.d("onNewsClickListener", e.toString())
                 }
             }
         }

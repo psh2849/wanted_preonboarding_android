@@ -11,7 +11,7 @@ class Constants {
         const val NEWS_CATEGORY = "category"
 
         const val INPUT_NEWS_COUNTRY = "us"
-        const val INPUT_NEWS_API_KEY = ""
+        const val INPUT_NEWS_API_KEY = "3e41ea6dbe1c4dac8493476de2f17906"
         const val INPUT_NEWS_PAGE_SIZE = "100"
 
     }

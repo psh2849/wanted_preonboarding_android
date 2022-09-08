@@ -23,11 +23,11 @@ class NewsDetailFragment : Fragment() {
     ): View? {
         val view = inflater.inflate(R.layout.fragment_news_detail, container, false)
 
-        getBundleFromTopNewsFragment(view)
+        getArgsFromTopNewsFragment(view)
         return view
     }
 
-    private fun getBundleFromTopNewsFragment(view: View) {
+    private fun getArgsFromTopNewsFragment(view: View) {
         val result = args.article
 
         view.tv_detail_title.text = result.title
