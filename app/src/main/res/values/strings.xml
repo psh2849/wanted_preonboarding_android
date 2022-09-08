@@ -5,4 +5,12 @@
     <string name="top_news">Top News</string>
     <string name="categories">Categories</string>
     <string name="saved">Saved</string>
+    <string name="technology">technology</string>
+    <string name="sports">sports</string>
+    <string name="science">science</string>
+    <string name="health">health</string>
+    <string name="general">general</string>
+    <string name="entertain">entertain</string>
+    <string name="business">business</string>
+    <string name="choose_a_category_to_start_reading">Choose a category to start reading</string>
 </resources>
