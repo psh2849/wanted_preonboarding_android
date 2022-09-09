@@ -11,6 +11,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.newsapp.adapter.NewsAdapter
 import com.example.newsapp.databinding.FragmentTopNewsBinding
+import com.example.newsapp.ui.MainActivity
 import com.example.newsapp.util.NetworkResult
 import com.example.newsapp.viewmodel.NewsViewModel
 import dagger.hilt.android.AndroidEntryPoint
@@ -37,7 +38,7 @@ class TopNewsFragment : Fragment() {
         // Inflate the layout for this fragment
         _binding = FragmentTopNewsBinding.inflate(inflater, container, false)
         setRecyclerView()
-
+        (activity as MainActivity).supportActionBar?.title = "NewsApp"
         lifecycleScope.launch {
             requestNewsApiData()
         }

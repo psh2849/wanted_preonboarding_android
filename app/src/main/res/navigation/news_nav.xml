@@ -7,7 +7,7 @@
     <fragment
         android:id="@+id/topNewsFragment"
         android:name="com.example.newsapp.ui.topnews.TopNewsFragment"
-        android:label="fragment_top_news"
+        android:label="@string/NewsApp"
         tools:layout="@layout/fragment_top_news" >
         <action
             android:id="@+id/action_topNewsFragment_to_newsDetailFragment"
@@ -16,7 +16,7 @@
     <fragment
         android:id="@+id/categoriesFragment"
         android:name="com.example.newsapp.ui.categories.CategoriesFragment"
-        android:label="fragment_categories"
+        android:label="@string/category"
         tools:layout="@layout/fragment_categories" >
         <action
             android:id="@+id/action_categoriesFragment_to_categoriesListFragment"
@@ -25,7 +25,7 @@
     <fragment
         android:id="@+id/savedFragment"
         android:name="com.example.newsapp.ui.saved.SavedFragment"
-        android:label="fragment_saved"
+        android:label="@string/savedNews"
         tools:layout="@layout/fragment_saved" >
         <action
             android:id="@+id/action_savedFragment_to_newsDetailFragment"

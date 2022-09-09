@@ -15,7 +15,9 @@ import com.example.newsapp.bindingadapter.NewsRowBinding
 import com.example.newsapp.data.database.entity.SavedEntity
 import com.example.newsapp.viewmodel.NewsViewModel
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.android.synthetic.main.fragment_news_detail.*
 import kotlinx.android.synthetic.main.fragment_news_detail.view.*
+import kotlinx.android.synthetic.main.fragment_top_news.view.*
 
 @AndroidEntryPoint
 class NewsDetailFragment : Fragment() {
@@ -30,6 +32,7 @@ class NewsDetailFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         val view = inflater.inflate(R.layout.fragment_news_detail, container, false)
+        (activity as MainActivity).supportActionBar?.title = args.article.title
 
         getArgsFromTopNewsFragment(view)
 
@@ -59,8 +62,6 @@ class NewsDetailFragment : Fragment() {
         Toast.makeText(context, "Save News!", Toast.LENGTH_SHORT).show()
         isNewsSaved = true
     }
-
-
 
     private fun deleteToNews(view: View) {
         val savesEntity = SavedEntity(
@@ -94,6 +95,7 @@ class NewsDetailFragment : Fragment() {
         result.content?.let { content ->
             view.tv_detail_content.text = content
         }
+
 
         checkSelectedStar(view)
     }

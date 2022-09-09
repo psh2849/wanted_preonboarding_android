@@ -12,6 +12,7 @@ import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.newsapp.adapter.CategoryAdapter
 import com.example.newsapp.databinding.FragmentCategoriesListBinding
+import com.example.newsapp.ui.MainActivity
 import com.example.newsapp.util.NetworkResult
 import com.example.newsapp.viewmodel.NewsViewModel
 import dagger.hilt.android.AndroidEntryPoint
@@ -38,6 +39,8 @@ class CategoriesListFragment : Fragment() {
     ): View? {
         _binding = FragmentCategoriesListBinding.inflate(inflater, container, false)
         setRecyclerView()
+
+        (activity as MainActivity).supportActionBar?.title = "Category-" + args.category
 
         lifecycleScope.launch {
             requestNewsApiData()

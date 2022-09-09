@@ -18,7 +18,7 @@ class CategoryRowBinding {
     companion object {
         @BindingAdapter("onCategoryClickListener")
         @JvmStatic
-        fun onCategoryClickListener(newsRowLayout: ConstraintLayout, article: Article, action: NavAction) {
+        fun onCategoryClickListener(newsRowLayout: ConstraintLayout, article: Article) {
             newsRowLayout.setOnClickListener {
                 try {
                     val action =

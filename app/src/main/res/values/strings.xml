@@ -13,4 +13,7 @@
     <string name="entertain">entertain</string>
     <string name="business">business</string>
     <string name="choose_a_category_to_start_reading">Choose a category to start reading</string>
+    <string name="category">Category</string>
+    <string name="savedNews">Saved news</string>
+    <string name="NewsApp">NewsApp</string>
 </resources>
