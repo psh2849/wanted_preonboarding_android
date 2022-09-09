@@ -14,5 +14,7 @@ class Constants {
         const val INPUT_NEWS_API_KEY = "3e41ea6dbe1c4dac8493476de2f17906"
         const val INPUT_NEWS_PAGE_SIZE = "100"
 
+        const val SAVED_NEWS_TABLE = "saved_news_table"
+        const val NEWS_DATABASE_NAME = "saved_news_database"
     }
 }
