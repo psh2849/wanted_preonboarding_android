@@ -12,4 +12,5 @@
     <color name="text_light_black_color">#212124</color>
     <color name="text_hour_gray_color">#AFAFAF</color>
     <color name="top_news_light_gray_background_color">#F9F9F9</color>
+    <color name="star_color">#FFC114</color>
 </resources>
