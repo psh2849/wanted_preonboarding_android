@@ -1,10 +1,9 @@
 package com.example.newsapp.viewmodel
 
 import android.app.Application
-import androidx.lifecycle.AndroidViewModel
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.viewModelScope
+import androidx.lifecycle.*
 import com.example.newsapp.data.Repository
+import com.example.newsapp.data.database.entity.SavedEntity
 import com.example.newsapp.model.NewsResult
 import com.example.newsapp.util.Constants.Companion.INPUT_NEWS_API_KEY
 import com.example.newsapp.util.Constants.Companion.INPUT_NEWS_COUNTRY
@@ -15,6 +14,7 @@ import com.example.newsapp.util.Constants.Companion.NEWS_COUNTRY
 import com.example.newsapp.util.Constants.Companion.NEWS_PAGE_SIZE
 import com.example.newsapp.util.NetworkResult
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -22,9 +22,10 @@ import javax.inject.Inject
 class NewsViewModel @Inject constructor(
     application: Application,
     private val repository: Repository
-): AndroidViewModel(application){
+) : AndroidViewModel(application) {
 
     var newsResponse: MutableLiveData<NetworkResult<NewsResult>> = MutableLiveData()
+    val readSavedNews: LiveData<List<SavedEntity>> = repository.local.readNews().asLiveData()
 
     fun getQueries(): HashMap<String, String> {
         val queries: HashMap<String, String> = HashMap()
@@ -57,9 +58,21 @@ class NewsViewModel @Inject constructor(
         try {
             val response = repository.remote.getNews(queries)
             newsResponse.value = NetworkResult.Success(response.body()!!)
-        } catch(e: Exception) {
+        } catch (e: Exception) {
             newsResponse.value = NetworkResult.Error("News Not Found.")
         }
     }
 
+
+    fun insertSavedNews(savedEntity: SavedEntity) {
+        viewModelScope.launch(Dispatchers.IO) {
+            repository.local.insertNews(savedEntity)
+        }
+    }
+
+    fun deleteSavedNews(savedEntity: SavedEntity) {
+        viewModelScope.launch(Dispatchers.IO) {
+            repository.local.deleteNews(savedEntity)
+        }
+    }
 }
