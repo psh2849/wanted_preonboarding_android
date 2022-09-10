@@ -38,12 +38,9 @@ class SavedFragment : Fragment() {
     ): View? {
         _binding = FragmentSavedBinding.inflate(inflater, container, false)
         setRecyclerView()
-
-        lifecycleScope.launch {
-            newsViewModel.readSavedNews.observe(viewLifecycleOwner) { saved ->
-                mAdapter.setData(saved)
-            }
-        }
+        binding.lifecycleOwner = this
+        binding.newsViewModel = newsViewModel
+        binding.adapter = mAdapter
 
         return binding.root
     }

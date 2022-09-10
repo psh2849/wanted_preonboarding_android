@@ -1,39 +1,84 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/top_news_light_gray_background_color"
-    tools:context=".ui.saved.SavedFragment">
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <com.google.android.material.appbar.AppBarLayout
-        android:id="@+id/appbar_saved"
+    <data>
+
+        <variable
+            name="newsViewModel"
+            type="com.example.newsapp.viewmodel.NewsViewModel" />
+
+        <variable
+            name="adapter"
+            type="com.example.newsapp.adapter.SavedAdapter" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        android:layout_height="match_parent"
+        android:background="@color/top_news_light_gray_background_color"
+        tools:context=".ui.saved.SavedFragment">
 
-        <androidx.appcompat.widget.Toolbar
-            android:id="@+id/toolbar_saved"
+        <com.google.android.material.appbar.AppBarLayout
+            android:id="@+id/appbar_saved"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/bottom_navigation_background"
-            app:layout_scrollFlags="scroll|enterAlways"
-            tools:title="@string/savedNews"
-            app:titleTextColor="@color/white" />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
 
-    </com.google.android.material.appbar.AppBarLayout>
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbar_saved"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/bottom_navigation_background"
+                app:layout_scrollFlags="scroll|enterAlways"
+                app:titleTextColor="@color/white"
+                tools:title="@string/savedNews" />
+
+        </com.google.android.material.appbar.AppBarLayout>
 
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rv_saved"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/appbar_saved" />
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_saved"
+            setData="@{adapter}"
+            viewVisibility="@{newsViewModel.readSavedNews}"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/appbar_saved" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <ImageView
+            android:id="@+id/iv_saved"
+            viewVisibility="@{newsViewModel.readSavedNews}"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:src="@drawable/ic_empty"
+            android:visibility="invisible"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:tint="@color/text_hour_gray_color" />
+
+        <TextView
+            android:id="@+id/tv_saved"
+            viewVisibility="@{newsViewModel.readSavedNews}"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="@string/no_saved_news"
+            android:textColor="@color/text_hour_gray_color"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:visibility="invisible"
+            app:layout_constraintEnd_toEndOf="@id/iv_saved"
+            app:layout_constraintStart_toStartOf="@id/iv_saved"
+            app:layout_constraintTop_toBottomOf="@+id/iv_saved" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

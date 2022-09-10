@@ -16,4 +16,5 @@
     <string name="category">Category</string>
     <string name="savedNews">Saved news</string>
     <string name="NewsApp">NewsApp</string>
+    <string name="no_saved_news">No Saved News</string>
 </resources>
